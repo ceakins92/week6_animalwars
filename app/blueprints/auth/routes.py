@@ -28,17 +28,17 @@ def register():
     form = RegisterForm()
     if form.validate_on_submit():
         username = form.username.data
-        user = User.query.filter_by(username=username).first()
+        user = User.query.filter_by(username=form.username.data).first()
         email = User.query.filter_by(email=form.email.data)
         if not email and not user:
-            u = User(username=username,email=email,password=form.password.data)
+            u = User(username=form.username.data,email=form.email.data,password=form.password.data)
             u.commit()
-            flash(f"{username} registered!")
+            flash(f"{form.username.data} registered!")
             return redirect(url_for("main.home"))
         if user:
-            flash(f'{username} is already taken, please try again')
+            flash(f'{form.username.data} is already taken, please try again')
         else:
-            flash(f'{email} is already taken, please try again')
+            flash(f'{form.email.data} is already taken, please try again')
     return render_template('register.jinja', form=form)
 
 @bp.route('/contact')
