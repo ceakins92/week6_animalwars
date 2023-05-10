@@ -29,7 +29,7 @@ def register():
     if form.validate_on_submit():
         username = form.username.data
         user = User.query.filter_by(username=form.username.data).first()
-        email = User.query.filter_by(email=form.email.data)
+        email = User.query.filter_by(email=form.email.data).first()
         if not email and not user:
             u = User(username=form.username.data,email=form.email.data,password=form.password.data)
             u.commit()
