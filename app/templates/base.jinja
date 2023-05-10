@@ -36,10 +36,10 @@
                     <a class="nav-link" href="/auth/purchase"> Purchase </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/forms/commission"> Commission Work </a>
+                    <a class="nav-link" href="/auth/commission"> Commission Work </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/forms/contact"> Contact </a>
+                    <a class="nav-link" href="/auth/contact"> Contact </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/signin"> Sign-In </a>
@@ -47,8 +47,23 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/register"> Register </a>
                 </li>
+
+            </ul>
+            <ul>
+                <li class="nav-item">
+
+                    <a class="nav-link" href="#">
+                        <font style="color: rgb(226, 214, 161)"> Welcome {% if username %}{{ username }}{% else %},
+                            please sign-in{% endif %}</font>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                </li>
             </ul>
             <form class="d-flex" role="search">
+
                 <input class="form-control me-2" type="search" placeholder="Search Animal Wars" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
