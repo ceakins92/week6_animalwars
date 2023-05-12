@@ -11,7 +11,7 @@ migrate = Migrate(app,db)
 login = LoginManager(app)
 
 login.login_view = 'auth.signin'
-login.login_message = "Please Login"
+login.login_message = "Please Login First"
 login.login_message_category = "warning"
 
 from app.blueprints.auth import bp as auth_bp
@@ -21,5 +21,5 @@ app.register_blueprint(main_bp)
 from app.blueprints.social import bp as social_bp
 app.register_blueprint(social_bp)
 from app.blueprints.api import bp as api_bp
-
+app.register_blueprint(api_bp)
 from app import models

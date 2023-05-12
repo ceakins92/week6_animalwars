@@ -16,9 +16,13 @@ class SigninForm(FlaskForm):
     submit = SubmitField('Sign-In')
 
 class PostForm(FlaskForm):
-    body = StringField('Share', validators=[DataRequired()])
+    body = StringField('Comments', validators=[DataRequired()])
+    card_name = StringField('Card Name', validators=[DataRequired()])
+    card_series = StringField('Card Series', validators=[DataRequired()])
+    card_number = StringField('Card Number', validators=[DataRequired()])
+    card_value = StringField('Card Value', validators=[DataRequired()])
     submit = SubmitField('Publish')
 
 class UserSearchForm(FlaskForm):
-    user = StringField('user', validators=[DataRequired()])
+    user = StringField('User', validators=[DataRequired()])
     submit = SubmitField('Search')

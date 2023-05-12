@@ -3,9 +3,6 @@ from flask import request, jsonify
 from . import bp
 from app.models import User
 
-# Verify User
-# @bp.route('/verify-user',methods=['POST'])
-
 @bp.post('/verifyuser')
 def verify_user():
   content = request.json
@@ -17,7 +14,6 @@ def verify_user():
     return jsonify([{'user id': user.user_id}])
   return jsonify([{'message':'Invalid User Info'}]) 
 
-# Register User
 @bp.post('/register-user')
 def register_user():
   content = request.json

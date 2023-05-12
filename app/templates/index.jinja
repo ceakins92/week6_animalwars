@@ -9,9 +9,12 @@
         <img src="{{url_for('static', filename='splashscreen.jpg')}}" align="middle" width="600px" />
         <br>
         <br>
-        <h5 style="color: rgb(226, 214, 161)">NOW AVAILABLE:
+        <h5 style="color: rgb(226, 214, 161)">Welcome {% if current_user.is_authenticated %}back {% endif %}to
             <font style="color: white">Animal Wars</font><em>
                 <font style="color: red">2086</font>
+                {% if current_user.is_authenticated %}, {{ current_user.username
+                }}!
+                {% endif %}
             </em>!
         </h5>
         <br>

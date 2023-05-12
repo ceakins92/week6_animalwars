@@ -2,69 +2,48 @@
 
 {% block content %}
 
-<head>
-    <style type="text/css">
-        input {
-            width: 300px;
-        }
-    </style>
 
-</head>
 
 <body background-color="black">
     <center>
-        <div class="container text-center">
-            <div class="row justify-content-md-center">
-                <div class="col col-lg-2">
+        <br>
+        <img src="{{url_for('static', filename='evilkitty005.jpeg')}}" align="middle" width="300px" />
+        <br>
+        <br>
+        <h5 style="color: rgb(226, 214, 161)">Share with the <font style="color: white">Animal Wars</font>
+            <em>
+                <font style="color: red">2086</font>
+                <font style="color:rgb(226, 214, 161)"> community!</font>
+            </em> Account:
+        </h5>
+        <br>
+        <br>
+        <form action="" method="post">
+            <font style="color:rgb(226, 214, 161)">
+                {{ form.hidden_tag()}}
 
-                </div>
-                <div class="col-md-auto">
-                    <br>
-                    <img src="{{url_for('static', filename='evilkitty005.jpeg')}}" align="middle" width="300px" />
-                    <br>
-                    <br>
-                    <h5 style="color: rgb(226, 214, 161)">Share with the <font style="color: white">Animal Wars</font>
-                        <em>
-                            <font style="color: red">2086</font>
-                            <font style="color:rgb(226, 214, 161)"> community!</font>
-                        </em> Account:
-                    </h5>
-                    <br>
-                    <br>
-                    <form action="" method="post">
-                        <font style="color:rgb(226, 214, 161)">
-                            {{ form.hidden_tag()}}
+                <p>
+                    {{ form.card_name.label }}<br>
+                    {{ form.card_name(size=50) }}<br>
+                    {{ form.card_series.label }}<br>
+                    {{ form.card_series(size=50) }}<br>
+                    {{ form.card_number.label }}<br>
+                    {{ form.card_number(size=50) }}<br>
+                    {{ form.card_value.label }}<br>
+                    {{ form.card_value(size=50) }}<br>
+                    {{ form.body.label }}<br>
+                    {{ form.body(size=50) }}<br>
+                    {% for error in form.body.errors %}
+                    <span class="err-msg"> {{ error }} </span>
+                    {% endfor %}
+                </p>
 
-                            <p>
-                                {{ form.body.label }}<br>
-                                {{ form.body(size=250) }}
-                                {% for error in form.body.errors %}
-                                <span class="err-msg"> {{ error }} </span>
-                                {% endfor %}
-                            </p>
+                <p>
+                    {{ form.submit() }}
 
-                            <p>
-                                {{ form.submit() }}
+                </p>
+        </form>
 
-                            </p>
-                    </form>
-                </div>
-                <div class="col col-lg-2">
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-
-                </div>
-                <div class="col-md-auto">
-
-                </div>
-                <div class="col col-lg-2">
-
-                </div>
-            </div>
-        </div>
         </font>
     </center>
 </body>

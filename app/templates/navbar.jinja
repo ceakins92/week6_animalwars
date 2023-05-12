@@ -24,17 +24,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('auth.contact') }}"> Contact </a>
                 </li>
+                {% if not current_user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('auth.signin') }}"> Sign-In </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('auth.register') }}"> Register </a>
                 </li>
+                {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('social.post') }}"> Posts </a>
+                    <a class="nav-link" href="{{ url_for('social.post') }}"> Post </a>
                 </li>
-            </ul>
-            <ul>
+
                 <li class="nav-item" style="list-style-type:none;">
                     <a class="nav-link" href="{{ url_for('social.user_page', username=current_user.username) }}">My
                         Page</a>
@@ -42,16 +43,17 @@
                 <li class="nav-item" style="list-style-type:none;">
                     <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
                 </li>
+                {% endif %}
             </ul>
             <ul style="list-style-type:none;">
                 <li>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
+            {% if current_user.is_authenticated %}
+            {% include './includes/user_search.jinja' %}
+            {% endif %}
 
-                <input class="form-control me-2" type="search" placeholder="Search Animal Wars" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+
         </div>
     </div>
 </nav>

@@ -36,6 +36,10 @@ class User(UserMixin, db.Model):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(250))
+    card_name = db.Column(db.String(50))
+    card_series = db.Column(db.String(50))
+    card_number = db.Column(db.String(50))
+    card_value = db.Column(db.Integer)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
 
@@ -44,4 +48,4 @@ class Post(db.Model):
     
     def commit(self):
         db.session.add(self)
-        db.commit(self)
+        db.session.commit()
