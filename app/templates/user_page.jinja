@@ -1,0 +1,24 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<center>
+    <div class="col-md-auto">
+        <br>
+        <br>
+        <img src="{{url_for('static', filename='preview.jpg')}}" align="middle" height="400px" />
+        <br>
+        <br>
+        <h5 style="color: rgb(226, 214, 161)">
+            {{ user.username }}'s <font style="color: white">Animal Wars</font><em>
+                <font style="color: red">2086</font> posts
+            </em>
+        </h5>
+        <br>
+
+        {% for post in user.posts %}
+        <p>{{ post.body }}</p>
+        <small>{{ post.timestamp }}</small>
+        {% endfor %}
+    </div>
+</center>
+{% endblock %}

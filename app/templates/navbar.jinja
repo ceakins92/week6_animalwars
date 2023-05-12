@@ -36,12 +36,11 @@
             </ul>
             <ul>
                 <li class="nav-item" style="list-style-type:none;">
-
-
-                    <font style="color: rgb(226, 214, 161)">{% if current_user.is_authenticated %}
-    <h6>Welcome {{ current_user.username }}</h6>
-    {% endif %}</font>
-
+                    <a class="nav-link" href="{{ url_for('social.user_page', username=current_user.username) }}">My
+                        Page</a>
+                </li>
+                <li class="nav-item" style="list-style-type:none;">
+                    <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
                 </li>
             </ul>
             <ul style="list-style-type:none;">

@@ -1,22 +1,71 @@
 {% extends "base.jinja" %}
 
 {% block content %}
-<form action="" method="post">
-    <h3>Share With Us</h3>
 
-    {{ form.hidden_tag()}}
+<head>
+    <style type="text/css">
+        input {
+            width: 300px;
+        }
+    </style>
 
-    <p>
-        {{ form.body.label }}<br>
-        {{ form.body(size=32) }}
-        {% for error in form.body.errors %}
-        <span class="err-msg"> {{ error }} </span>
-        {% endfor %}
-    </p>
+</head>
 
-    <p>
-        {{ form.submit() }}
+<body background-color="black">
+    <center>
+        <div class="container text-center">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-2">
 
-    </p>
-</form>
+                </div>
+                <div class="col-md-auto">
+                    <br>
+                    <img src="{{url_for('static', filename='evilkitty005.jpeg')}}" align="middle" width="300px" />
+                    <br>
+                    <br>
+                    <h5 style="color: rgb(226, 214, 161)">Share with the <font style="color: white">Animal Wars</font>
+                        <em>
+                            <font style="color: red">2086</font>
+                            <font style="color:rgb(226, 214, 161)"> community!</font>
+                        </em> Account:
+                    </h5>
+                    <br>
+                    <br>
+                    <form action="" method="post">
+                        <font style="color:rgb(226, 214, 161)">
+                            {{ form.hidden_tag()}}
+
+                            <p>
+                                {{ form.body.label }}<br>
+                                {{ form.body(size=250) }}
+                                {% for error in form.body.errors %}
+                                <span class="err-msg"> {{ error }} </span>
+                                {% endfor %}
+                            </p>
+
+                            <p>
+                                {{ form.submit() }}
+
+                            </p>
+                    </form>
+                </div>
+                <div class="col col-lg-2">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+
+                </div>
+                <div class="col-md-auto">
+
+                </div>
+                <div class="col col-lg-2">
+
+                </div>
+            </div>
+        </div>
+        </font>
+    </center>
+</body>
 {% endblock %}

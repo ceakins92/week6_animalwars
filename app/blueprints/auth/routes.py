@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect, url_for
-from flask_login import login_user
+from flask_login import login_user, logout_user, login_required
 from app.models import User
+from flask_login import current_user
 #from app import db
 
 from . import bp
@@ -19,6 +20,12 @@ def signin():
         else:
             flash(f"{form.username.data}/password not found")
     return render_template('signin.jinja', form=form)
+
+@bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('main.home'))
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
