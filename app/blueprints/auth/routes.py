@@ -1,7 +1,10 @@
-from flask import render_template, flash, redirect, url_for
+from flask import Flask, render_template, flash, redirect, url_for, request
 from flask_login import login_user, logout_user, login_required
-from app.models import User
+from flask import request
+from app.forms import CommissionForm, ContactForm
+from app.models import User, Commission
 from flask_login import current_user
+import pandas as pd
 
 from . import bp
 from app.forms import RegisterForm
@@ -50,15 +53,30 @@ def register():
             flash(f'{form.email.data} is already taken, please try again', 'warning')
     return render_template('register.jinja', form=form)
 
-@bp.route('/contact')
-def contact():
-    return render_template('contact.jinja')
-
-@bp.route('/commission')
-def commission():
-    return render_template('commission.jinja')
-
-@bp.route('/purchase')
+@bp.route('/commission', methods=["GET","POST"])
 @login_required
-def purchase():
-    return render_template('purchase.jinja')
+def get_commission():
+    form = CommissionForm()
+    if form.validate_on_submit():
+        c = Commission(name=form.name.data,email=form.email.data,subject=form.subject.data,request=form.message.data,budget=form.budget.data)
+        c.user_id = current_user.user_id
+        c.commit()
+        flash('Request Sent!', 'success')
+        return redirect(url_for('social.user_page', username=current_user.username))
+    else:
+        return render_template('commission.jinja', form=form)
+
+@bp.route('/contactus', methods=["GET", "POST"])
+def get_contact():
+    form = ContactForm()
+    if request.method == 'POST':
+        name = request.form["name"]
+        email = request.form["email"]
+        subject = request.form["subject"]
+        message = request.form["message"]
+        res = pd.DataFrame({'name': name, 'email': email, 'subject': subject, 'message': message}, index=[0])
+        res.to_csv('./contactusMessage.csv')
+        flash('Message Sent!', 'success')
+        return redirect(url_for('social.user_page', username=current_user.username))
+    else:
+        return render_template('contact.jinja', form=form)

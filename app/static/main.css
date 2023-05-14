@@ -13,8 +13,15 @@
   --border: 3px solid #fff;
 }
 
-.err-msg{
-  color:red
+.table1 {
+  text-align: left;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.err-msg {
+  color: red;
 }
 * {
   -webkit-box-sizing: border-box;

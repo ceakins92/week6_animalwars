@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField, BooleanField
 from wtforms.validators import DataRequired, Email
 
 class RegisterForm(FlaskForm):
@@ -26,3 +26,18 @@ class PostForm(FlaskForm):
 class UserSearchForm(FlaskForm):
     user = StringField('User', validators=[DataRequired()])
     submit = SubmitField('Search')
+
+class CommissionForm(FlaskForm):
+    name = TextAreaField('Name', validators=[DataRequired()])
+    email = TextAreaField('Email', validators=[DataRequired()])
+    subject = TextAreaField('Subject', validators=[DataRequired()])
+    message = TextAreaField('Request', validators=[DataRequired()])
+    budget = StringField('Budget', validators=[DataRequired()])
+    submit = SubmitField("Send")
+
+class ContactForm(FlaskForm):
+    name = TextAreaField("Name")
+    email = TextAreaField("Email")
+    subject = TextAreaField("Subject")
+    message = TextAreaField("Message")
+    submit = SubmitField("Send")

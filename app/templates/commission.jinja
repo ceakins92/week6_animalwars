@@ -5,13 +5,50 @@
 <body background-color="black">
     <center>
         <br>
-        <img src="{{url_for('static', filename='soon.jpeg')}}" align="middle" width="300px" />
+        <img src="{{url_for('static', filename='jackedrabbit.jpg')}}" align="middle" height="400px" />
         <br>
         <br>
-        <h5 style="color: rgb(226, 214, 161)">Request Commissioned Work: Coming Soon to <font style="color: white">
+        <h5 style="color: rgb(226, 214, 161)">Request Commissioned Work from <font style="color: white">
                 Animal Wars
             </font><em>
                 <font style="color: red">2086</font>
+            </em></h5>
+        <br>
+        <font style="color: rgb(226, 214, 161)">
+
+
+
+            <form class="contact" action="{{ url_for('auth.get_commission') }}" method=post>
+
+                {{ form.hidden_tag()}}
+                <p>
+                    {{ form.name.label }}<br>
+                    {{ form.name(placeholder='Full Name') }}<br>
+                    {{ form.email.label }}<br>
+                    {{ form.email(placeholder='Your Email ...') }}<br>
+                    {{ form.subject.label }}<br>
+                    {{form.subject(placeholder='Subject ...')}}<br>
+                    {{ form.message.label }}<br>
+                    {{ form.message(placeholder='Describe your Request ...') }}<br>
+                    {{ form.budget.label }}<br>
+                    {{ form.budget(placeholder='Your Budget ...') }}<br><br>
+                    {{ form.submit() }}
+                </p>
+
+            </form>
+
+
+
+        </font>
     </center>
+
 </body>
+
+
+
+
+
+
+
+
 {% endblock %}
